@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hits_and_blows_game/src/feature/game/providers/textfield_input_provider.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/number_input_field.dart';
+import 'package:hits_and_blows_game/src/global/themes/theme.dart';
+import 'package:pinput/pinput.dart';
 
 class NumberInputs extends ConsumerStatefulWidget {
   final AnimationController shakeController;
@@ -42,6 +44,19 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
       textfieldInputProvider(widget.secretLength),
     );
 
+    final defaultPinTheme = PinTheme(
+      width: 56,
+      height: 56,
+      textStyle: const TextStyle(
+        fontSize: 22,
+        color: Color.fromRGBO(30, 60, 87, 1),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(19),
+        color: Colors.white,
+      ),
+    );
+
     return AnimatedBuilder(
       animation: _shakeAnimation,
       builder: (context, child) {
@@ -53,23 +68,29 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
           child: child,
         );
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(widget.secretLength, (index) {
-          return NumberInputField(
-            index: index,
-            secretLength: widget.secretLength,
-            controller: textfieldControllers.controllers[index],
-            focusNode: textfieldControllers.focusNodes[index],
-            onChanged: (digit) {
-              setState(() {
-                widget.currentGuess[index] = digit;
-                widget.setInvalidMessage;
-              });
-            },
-          );
-        }),
+      child: Pinput(
+        length: widget.secretLength,
+        controller: textfieldControllers.controllers.first,
+        focusNode: textfieldControllers.focusNodes.first,
+        defaultPinTheme: defaultPinTheme,
       ),
+      // child: Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: List.generate(widget.secretLength, (index) {
+      //     return NumberInputField(
+      //       index: index,
+      //       secretLength: widget.secretLength,
+      //       controller: textfieldControllers.controllers[index],
+      //       focusNode: textfieldControllers.focusNodes[index],
+      //       onChanged: (digit) {
+      //         setState(() {
+      //           widget.currentGuess[index] = digit;
+      //           widget.setInvalidMessage;
+      //         });
+      //       },
+      //     );
+      //   }),
+      // ),
     );
   }
 }

@@ -12,6 +12,25 @@ class TextfieldInputState {
     return TextfieldInputState._(controllers, focusNodes);
   }
 
+  void onTextChanged(BuildContext context, int index) {
+    String value = controllers[index].text;
+    print(value);
+    if (value.isEmpty && index > 0) {
+      print("Go back one");
+      // request focus for the previous "box"
+      FocusScope.of(context).nextFocus();
+      return;
+    }
+    if (value.isNotEmpty && index < focusNodes.length - 1) {
+      print("go forward one");
+      FocusScope.of(context).previousFocus();
+    }
+  }
+
+  void moveFocusForward(BuildContext context) {
+    FocusScope.of(context).nextFocus();
+  }
+
   void dispose() {
     for (final c in controllers) {
       c.dispose();

@@ -75,10 +75,10 @@ class GameStateNotifier extends StateNotifier<GameState> {
     await prefs.setInt('gamesPlayed', state.gamesPlayed);
   }
 
-  // Update current digit index (for input field navigation)
-  void updateCurrentDigitIndex(int index) {
-    state = state.copyWith(currentDigitIndex: index);
-  }
+  // // Update current digit index (for input field navigation)
+  // void updateCurrentDigitIndex(int index) {
+  //   state = state.copyWith(currentDigitIndex: index);
+  // }
 
   // Submit a guess
   Guess? submitGuess(List<int> digits) {
