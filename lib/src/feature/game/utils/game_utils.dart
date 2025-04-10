@@ -44,19 +44,29 @@ class GameUtils {
     return {'hits': hits, 'blows': blows};
   }
 
+  static List<int> getDigitsFromString(String input) {
+    return input.split('').map(int.parse).toList();
+  }
+
   // Validate a guess
-  static bool isValidGuess(List<int?> digits) {
-    // Check if all digits are provided
-    if (digits.any((digit) => digit == null)) {
-      return false;
+  static String? isValidGuess(String? input, int length) {
+    if (input == null) {
+      return "Please enter $length unique digits";
+    }
+    final digits = getDigitsFromString(input);
+
+    if (digits.length != length) {
+      return "Please enter $length digits";
     }
 
     // Convert to non-nullable list
-    final nonNullDigits = digits.map((d) => d!).toList();
+    final nonNullDigits = digits.map((d) => d).toList();
 
     // Check for duplicates (optional based on game rules)
     final uniqueDigits = nonNullDigits.toSet().length;
-    return uniqueDigits == nonNullDigits.length;
+    return uniqueDigits == nonNullDigits.length
+        ? null
+        : "Please enter $length unique digits";
   }
 
   // Format guess result for display

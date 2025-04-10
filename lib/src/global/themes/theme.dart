@@ -77,8 +77,10 @@ class AppTheme {
         foregroundColor: Colors.white,
         elevation: 0,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(style: primaryButtonStyle),
-      outlinedButtonTheme: OutlinedButtonThemeData(style: secondaryButtonStyle),
+      elevatedButtonTheme: ElevatedButtonThemeData(style: kPrimaryButtonStyle),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: kSecondaryButtonStyle,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Colors.white,
         filled: true,

@@ -3,13 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hits_and_blows_game/src/constants/button_styles.dart';
 import 'package:hits_and_blows_game/src/constants/logo.dart';
-import 'package:hits_and_blows_game/src/feature/game/models/guess.dart';
-import 'package:hits_and_blows_game/src/feature/game/providers/textfield_input_provider.dart';
+import 'package:hits_and_blows_game/src/feature/game/providers/input_provider.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/fading_popup_overlay.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/feedback_message_box.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/history_list.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/number_inputs.dart';
-import 'package:hits_and_blows_game/src/feature/game/utils/game_utils.dart';
 import 'package:hits_and_blows_game/src/feature/game/providers/game_state_provider.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/secret_code_reveal.dart';
@@ -35,19 +33,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
     secretLength = ref.read(gameStateProvider.notifier).secretLength;
     _currentGuess = List.filled(secretLength, null);
     _feedbackMessage = 'Enter your $secretLength-digit guess';
-    setUpControllers();
     setUpAnimations();
-  }
-
-  setUpControllers() {
-    // Listen for focus changes to update the current digit index
-    // for (int i = 0; i < _focusNodes.length; i++) {
-    //   _focusNodes[i].addListener(() {
-    //     if (_focusNodes[i].hasFocus) {
-    //       ref.read(gameStateProvider.notifier).updateCurrentDigitIndex(i);
-    //     }
-    //   });
-    // }
   }
 
   setUpAnimations() {
@@ -71,49 +57,44 @@ class _GameScreenState extends ConsumerState<GameScreen>
   }
 
   void _submitGuess() {
+    final inputForm = ref.watch(singleInputProvider);
+    inputForm.focusNode.unfocus();
+    final isValid = inputForm.formKey.currentState?.validate();
+    print("Puggy thinks isValid is: $isValid");
     // Validate the guess
-    if (!GameUtils.isValidGuess(_currentGuess)) {
-      setState(() {
-        _showInvalidInputMessage = true;
-        _feedbackMessage = 'Please enter $secretLength unique digits';
-      });
-      _animationController.forward().then((_) {
-        _animationController.reverse();
-      });
-      return;
-    }
-
-    final nonNullGuess = _currentGuess.map((e) => e!).toList();
+    // if (!GameUtils.isValidGuess(_currentGuess)) {
+    //   setState(() {
+    //     _showInvalidInputMessage = true;
+    //     _feedbackMessage = 'Please enter $secretLength unique digits';
+    //   });
+    //   _animationController.forward().then((_) {
+    //     _animationController.reverse();
+    //   });
+    //   return;
+    // }
 
     // Submit the guess
-    Guess? guessResult = ref
-        .read(gameStateProvider.notifier)
-        .submitGuess(nonNullGuess);
+    // Guess? guessResult = ref
+    //     .read(gameStateProvider.notifier)
+    //     .submitGuess(nonNullGuess);
 
-    // Reset the input fields
-    _clearInputs();
+    // // Reset the input fields
+    // _clearInputs();
 
-    // Update feedback message based on the latest guess
-    final gameState = ref.read(gameStateProvider);
+    // // Update feedback message based on the latest guess
+    // final gameState = ref.read(gameStateProvider);
 
-    if (!gameState.gameCompleted && guessResult != null) {
-      _showResultAnimation(guessResult.hits, guessResult.blows);
-    }
+    // if (!gameState.gameCompleted && guessResult != null) {
+    //   _showResultAnimation(guessResult.hits, guessResult.blows);
+    // }
 
-    // Set focus to first field for next guess if game is not over
-    if (!gameState.gameCompleted) {
-      // _showResultAnimation(hits, blows);
-      ref
-          .read(textfieldInputProvider(secretLength))
-          .focusNodes[0]
-          .requestFocus();
-    }
-    if (gameState.gameCompleted) {
-      setState(() {
-        _feedbackMessage = null;
-        _showInvalidInputMessage = false;
-      });
-    }
+    // // Set focus to first field for next guess if game is not over
+    // if (gameState.gameCompleted) {
+    //   setState(() {
+    //     _feedbackMessage = null;
+    //     _showInvalidInputMessage = false;
+    //   });
+    // }
   }
 
   void _showResultAnimation(int hits, int blows) {

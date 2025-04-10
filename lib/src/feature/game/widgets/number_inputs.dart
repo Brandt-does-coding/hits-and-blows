@@ -1,9 +1,9 @@
 // number_inputs.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hits_and_blows_game/src/feature/game/providers/textfield_input_provider.dart';
-import 'package:hits_and_blows_game/src/feature/game/widgets/number_input_field.dart';
-import 'package:hits_and_blows_game/src/global/themes/theme.dart';
+import 'package:hits_and_blows_game/src/constants/input_styles.dart';
+import 'package:hits_and_blows_game/src/feature/game/providers/input_provider.dart';
+import 'package:hits_and_blows_game/src/feature/game/utils/game_utils.dart';
 import 'package:pinput/pinput.dart';
 
 class NumberInputs extends ConsumerStatefulWidget {
@@ -40,22 +40,7 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
 
   @override
   Widget build(BuildContext context) {
-    final textfieldControllers = ref.watch(
-      textfieldInputProvider(widget.secretLength),
-    );
-
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        color: Colors.white,
-      ),
-    );
+    final inputState = ref.watch(singleInputProvider);
 
     return AnimatedBuilder(
       animation: _shakeAnimation,
@@ -68,11 +53,16 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
           child: child,
         );
       },
-      child: Pinput(
-        length: widget.secretLength,
-        controller: textfieldControllers.controllers.first,
-        focusNode: textfieldControllers.focusNodes.first,
-        defaultPinTheme: defaultPinTheme,
+      child: Form(
+        key: inputState.formKey,
+        child: Pinput(
+          length: widget.secretLength,
+          controller: inputState.controller,
+          validator:
+              (value) => GameUtils.isValidGuess(value, widget.secretLength),
+          focusNode: inputState.focusNode,
+          defaultPinTheme: kDefaultPinTheme,
+        ),
       ),
       // child: Row(
       //   mainAxisAlignment: MainAxisAlignment.center,
