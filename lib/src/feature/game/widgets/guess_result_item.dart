@@ -45,24 +45,24 @@ class GuessResultItem extends StatelessWidget {
       child: Row(
         children: [
           // Attempt number
-          Container(
-            width: 30,
-            height: 30,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: isLatest ? AppTheme.primaryColor : Colors.grey.shade200,
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              '${guess.attemptNumber}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isLatest ? Colors.white : Colors.black,
-                fontSize: 14,
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
+          // Container(
+          //   width: 30,
+          //   height: 30,
+          //   alignment: Alignment.center,
+          //   decoration: BoxDecoration(
+          //     color: isLatest ? AppTheme.primaryColor : Colors.grey.shade200,
+          //     shape: BoxShape.circle,
+          //   ),
+          //   child: Text(
+          //     '${guess.attemptNumber}',
+          //     style: TextStyle(
+          //       fontWeight: FontWeight.bold,
+          //       color: isLatest ? Colors.white : Colors.black,
+          //       fontSize: 14,
+          //     ),
+          //   ),
+          // ),
+          // const SizedBox(width: 12),
 
           // Guess digits
           Expanded(
@@ -75,7 +75,7 @@ class GuessResultItem extends StatelessWidget {
                       height: 36,
                       margin: const EdgeInsets.symmetric(horizontal: 3),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
+                        color: Colors.grey.shade400,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       alignment: Alignment.center,

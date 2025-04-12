@@ -24,8 +24,8 @@ class SecretCodeReveal extends ConsumerWidget {
         children:
             secretCode.map((digit) {
               return Container(
-                height: 60,
-                width: 60,
+                height: 50,
+                width: 50,
                 margin: const EdgeInsets.symmetric(horizontal: 4),
                 decoration: BoxDecoration(
                   color: Colors.white,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';
 
-const appLogo = Hero(
+const kAppLogo = Hero(
   tag: 'logo',
   child: Material(
     type: MaterialType.transparency,

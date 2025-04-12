@@ -26,7 +26,7 @@ final ButtonStyle kHardButtonStyle = ElevatedButton.styleFrom(
 final ButtonStyle kPrimaryButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: AppTheme.primaryColor,
   foregroundColor: Colors.white,
-  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+  padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 12),
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
 );
 

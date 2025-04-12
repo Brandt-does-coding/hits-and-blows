@@ -13,7 +13,7 @@ class InputState {
 
   void clear() => controller.clear();
 
-  List<int> getDigits(String input) => GameUtils.getDigitsFromString(input);
+  List<int> getDigits() => GameUtils.getDigitsFromString(controller.text);
 
   void dispose() {
     controller.dispose();

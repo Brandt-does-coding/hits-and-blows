@@ -14,7 +14,7 @@ class HitsAndBlowsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Hits and Blows',
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );

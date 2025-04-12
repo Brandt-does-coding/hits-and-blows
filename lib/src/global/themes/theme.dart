@@ -63,15 +63,16 @@ class AppTheme {
   );
 
   // Theme data
-  static ThemeData get lightTheme {
+  static ThemeData get darkTheme {
     return ThemeData(
+      fontFamily: 'Roboto',
       primaryColor: primaryColor,
-      colorScheme: ColorScheme.light(
+      colorScheme: ColorScheme.dark(
         primary: primaryColor,
         secondary: accentColor,
         surface: Colors.white,
       ),
-      scaffoldBackgroundColor: backgroundColor,
+      scaffoldBackgroundColor: darkBackgroundColor,
       appBarTheme: const AppBarTheme(
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,

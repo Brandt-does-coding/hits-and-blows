@@ -28,3 +28,13 @@ final kDefaultPinTheme = PinTheme(
     color: Colors.white,
   ),
 );
+
+final kSubmitPinTheme = PinTheme(
+  width: 56,
+  height: 56,
+  textStyle: const TextStyle(fontSize: 22, color: AppTheme.correctColor),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(19),
+    color: Colors.white38,
+  ),
+);

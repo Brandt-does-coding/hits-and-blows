@@ -2,97 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hits_and_blows_game/src/constants/button_styles.dart';
+import 'package:hits_and_blows_game/src/constants/logo.dart';
+import 'package:hits_and_blows_game/src/feature/instructions/view/instructions_screen.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';
 import 'package:hits_and_blows_game/src/global/widgets/buttons.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: Duration(milliseconds: 500),
-      vsync: this,
-      lowerBound: 0.9,
-      upperBound: 1.0,
-    )..repeat(reverse: true);
-
-    _scaleAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.darkBackgroundColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Hero(
-              tag: 'logo',
-              child: Material(
-                type: MaterialType.transparency,
-                child: DefaultTextStyle(
-                  style: AppTheme.mainTitleStyle.copyWith(fontSize: 36),
-                  child: Text('Hits & Blows'),
-                ),
+      appBar: AppBar(title: kAppLogo, backgroundColor: Colors.transparent),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            spacing: 24.0,
+            children: [
+              // Top-aligned Hero
+              Image.asset(
+                'assets/images/icon_min.png',
+                width: 250,
+                height: 200,
+                fit: BoxFit.contain, // or .cover, .fill, etc.
               ),
-            ),
-            SizedBox(height: 40),
-            ScaleTransition(
-              scale: _scaleAnimation,
-              child: Consumer(
-                builder: (context, ref, child) {
-                  return AnimatedButton(
-                    onPressed: () {
-                      context.push('/mode-select');
-                    },
-                    text: 'Play',
-                    style: MainStyle(),
+              SizedBox(height: 40.0),
+              AnimatedButton(
+                onPressed: () {
+                  context.push('/mode-select');
+                },
+                text: 'Play',
+                style: MainStyle(),
+              ),
+              TextButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    builder: (context) => const InstructionsScreen(),
                   );
                 },
+                child: Text(
+                  'Instructions',
+                  style: TextStyle(fontSize: 18, color: Colors.white70),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            TextButton(
-              onPressed: () => context.push('/instructions'),
-              child: Text(
-                'Instructions',
-                style: TextStyle(fontSize: 18, color: Colors.white70),
-              ),
-            ),
-            SizedBox(height: 50),
-            OutlinedButton(
-              onPressed: () => context.push('/history'),
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(color: Colors.white70),
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-              ),
-              child: Text(
-                'History',
-                style: TextStyle(fontSize: 18, color: Colors.white70),
-              ),
-            ),
-          ],
+              SizedBox(height: 80.0),
+            ],
+          ),
         ),
       ),
     );
