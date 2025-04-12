@@ -70,6 +70,7 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
 
     if (!gameState.gameCompleted && guessResult != null) {
       _showResultAnimation(guessResult.hits, guessResult.blows);
+      inputForm.focusNode.nextFocus();
     }
   }
 
@@ -121,6 +122,7 @@ class _NumberInputsState extends ConsumerState<NumberInputs>
           );
         },
         child: Pinput(
+          autofocus: true,
           length: secretLength,
           controller: inputState.controller,
           mainAxisAlignment: MainAxisAlignment.center,
