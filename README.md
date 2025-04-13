@@ -24,7 +24,7 @@
 ## 📱 Screenshots
 
 ### Home Screen
-![Home Screen](screenshots/home_screen.png)
+![Home Screen](screenshots/home_screen.png =250x)
 
 ### Instructions Screen
 ![Instructions](screenshots/instructions.png)
