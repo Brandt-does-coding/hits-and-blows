@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';
-import 'package:hits_and_blows_game/src/feature/game/widgets/result_icon.dart';
+import 'package:hits_and_blows_game/src/feature/game/widgets/Feedback/result_icon.dart';
 
 class HitsAndBlowsCounter extends StatelessWidget {
   const HitsAndBlowsCounter({

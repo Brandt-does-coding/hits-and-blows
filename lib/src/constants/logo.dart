@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hits_and_blows_game/src/global/themes/theme.dart';
 
-const kAppLogo = Hero(
+final kAppLogo = Hero(
   tag: 'logo',
-  child: Material(
-    type: MaterialType.transparency,
-    child: DefaultTextStyle(
-      style: AppTheme.mainTitleStyle,
-      child: Text('Hits & Blows'),
+  key: Key('app_icon'),
+  child: SizedBox(
+    height: 32,
+    child: Image.asset(
+      'assets/images/icon_min.png',
+      fit: BoxFit.contain, // or .cover, .fill, etc.
     ),
   ),
 );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hits_and_blows_game/src/feature/game/models/guess.dart';
+import 'package:hits_and_blows_game/src/feature/game/widgets/Feedback/hits_and_blows_counter.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';
-import 'package:hits_and_blows_game/src/feature/game/widgets/hits_and_blows_counter.dart';
 
 class GuessResultItem extends StatelessWidget {
   final Guess guess;

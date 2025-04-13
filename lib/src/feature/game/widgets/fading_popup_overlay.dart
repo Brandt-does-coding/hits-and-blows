@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hits_and_blows_game/src/feature/game/widgets/hits_and_blows_counter.dart';
+import 'package:hits_and_blows_game/src/feature/game/widgets/Feedback/hits_and_blows_counter.dart';
 
 class FadingPopupOverlay extends StatefulWidget {
   final int hits;

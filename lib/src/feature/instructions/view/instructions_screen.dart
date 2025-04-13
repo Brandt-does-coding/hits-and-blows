@@ -32,14 +32,15 @@ class InstructionsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 20.0,
               children: [
-                Text('🎯 Hits & Blows', style: AppTheme.mainTitleStyle),
-                SizedBox(height: 20),
+                Center(
+                  child: Image.asset('assets/images/icon_min.png', height: 80),
+                ),
                 Text(
-                  '🔹 The game generates a secret 4-digit number with unique digits.',
+                  'The game generates a secret number with unique digits.',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 Text(
-                  '🔹 You guess the number using the input boxes.',
+                  'You guess the number using the input boxes.',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 Text(
@@ -54,7 +55,7 @@ class InstructionsScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 18, color: Colors.orangeAccent),
                 ),
                 Text(
-                  '🧠 Keep guessing until you get all 4 digits in the right place!',
+                  'Keep guessing until you get all the digits in the right place!',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ],

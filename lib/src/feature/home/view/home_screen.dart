@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hits_and_blows_game/src/constants/button_styles.dart';
 import 'package:hits_and_blows_game/src/constants/logo.dart';
@@ -19,16 +18,10 @@ class HomeScreen extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             spacing: 24.0,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Top-aligned Hero
-              Image.asset(
-                'assets/images/icon_min.png',
-                width: 250,
-                height: 200,
-                fit: BoxFit.contain, // or .cover, .fill, etc.
-              ),
+              Text("Hits & Blows", style: AppTheme.mainTitleStyle),
               SizedBox(height: 40.0),
               AnimatedButton(
                 onPressed: () {

@@ -23,7 +23,7 @@ class AppTheme {
 
   //Hit and Blow title
   static const TextStyle mainTitleStyle = TextStyle(
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: FontWeight.bold,
     color: blowColor,
     decoration: TextDecoration.none,

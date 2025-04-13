@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hits_and_blows_game/src/constants/button_styles.dart';
 import 'package:hits_and_blows_game/src/constants/logo.dart';
 import 'package:hits_and_blows_game/src/feature/game/providers/input_provider.dart';
-import 'package:hits_and_blows_game/src/feature/game/widgets/history_list.dart';
+import 'package:hits_and_blows_game/src/feature/game/widgets/History/history_list.dart';
 import 'package:hits_and_blows_game/src/feature/game/widgets/number_inputs.dart';
 import 'package:hits_and_blows_game/src/feature/game/providers/game_state_provider.dart';
 import 'package:hits_and_blows_game/src/global/themes/theme.dart';

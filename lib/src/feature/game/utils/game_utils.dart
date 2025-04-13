@@ -68,24 +68,4 @@ class GameUtils {
         ? null
         : "Please enter $length unique digits";
   }
-
-  // Format guess result for display
-  static String formatGuessResult(int hits, int blows) {
-    return "${hits}B ${blows}C";
-  }
-
-  // Get feedback message based on hits and blows
-  static String getFeedbackMessage(int hits, int blows) {
-    if (hits == 4) {
-      return "Perfect! You've found the secret code!";
-    } else if (hits == 3 && blows == 0) {
-      return "So close! Just one digit to fix.";
-    } else if (hits == 0 && blows == 0) {
-      return "No matches at all. Try different digits.";
-    } else if (hits + blows == 4) {
-      return "All digits are correct! Just rearrange them.";
-    } else {
-      return "$hits in the right position, $blows correct but misplaced.";
-    }
-  }
 }
