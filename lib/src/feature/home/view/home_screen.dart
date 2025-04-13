@@ -33,6 +33,7 @@ class HomeScreen extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   showModalBottomSheet(
+                    useRootNavigator: true,
                     context: context,
                     isScrollControlled: true,
                     shape: RoundedRectangleBorder(
