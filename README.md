@@ -23,7 +23,20 @@
 
 ## 📱 Screenshots
 
-*(Insert screenshots here if hosted or available)*
+### Home Screen
+![Home Screen](screenshots/home_screen.png)
+
+### Instructions Screen
+![Instructions](screenshots/instructions.png)
+
+### Mode Select Screen
+![Mode Select](screenshots/mode_select.png)
+
+### Game Screen
+![New Game](screenshots/game_new.png)
+
+### Game In Progress
+![In Progress Game](screenshots/game_in_progress.png)
 
 ## 🚀 Getting Started
 
